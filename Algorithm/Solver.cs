@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 
 namespace cykelfest
@@ -9,7 +10,6 @@ namespace cykelfest
     {
         public string CreateOutputFile(string filepath)
         {
-
             var teamList = new List<Team>();
             try
             {   // Open the text file using a stream reader.
@@ -43,6 +43,9 @@ namespace cykelfest
 
             List<Group> groups = new DynamicProblemSolver().Solve(teams);
 
+            var workDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString(), "result");
+            Directory.CreateDirectory(workDir);
+
             // Skapa grupp fil
             var content = "FoodType;Host;Guests";
             foreach(var group in groups)
@@ -50,7 +53,7 @@ namespace cykelfest
                 var _guests = string.Join(",", group.Guests.Select(g => g.Name));
                 content += $"\n{group.FoodType};{group.Host.Name};{_guests}";
             }
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine("GruppFil.csv")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(workDir, "GruppFil.csv")))
             {
                 outputFile.WriteLine(content);
             }
@@ -61,7 +64,7 @@ namespace cykelfest
             {
                 content += $"\n{group.Host.Name};{group.FoodType}";
             }
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine("HostInfo.csv")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(workDir, "HostInfo.csv")))
             {
                 outputFile.WriteLine(content);
             }
@@ -75,12 +78,15 @@ namespace cykelfest
                 var DessertGroup = team.Groups.Find(g => g.FoodType == FoodType.Dessert);
                 content += $"\n{team.Name};{PreCourseGroup.Host.Name};{MainCourseGroup.Host.Name};{DessertGroup.Host.Name}";
             }
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine("KvällsSchema.csv")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(workDir, "KvällsSchema.csv")))
             {
                 outputFile.WriteLine(content);
             }
 
-            return "GruppFil.csv";
+            var zipFilePath = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            ZipFile.CreateFromDirectory(workDir, zipFilePath);
+
+            return zipFilePath;
         }
     }
 }

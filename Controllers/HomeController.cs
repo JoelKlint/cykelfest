@@ -38,7 +38,7 @@ namespace cykelfest_web.Controllers
 
             var fileContent = System.IO.File.ReadAllBytes(outputFilePath);
 
-            return File(fileContent, "text/csv", "resultat.csv");
+            return File(fileContent, "application/zip", "result.zip");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
