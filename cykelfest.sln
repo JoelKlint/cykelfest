@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cykelfest", "cykelfest.csproj", "{B08A20B0-B1E2-4C51-B93D-128545E747B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cykelfest", "cykelfest.csproj", "{10B4D6A0-4140-4763-BBBB-FBB6611BE3EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +9,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B08A20B0-B1E2-4C51-B93D-128545E747B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B08A20B0-B1E2-4C51-B93D-128545E747B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B08A20B0-B1E2-4C51-B93D-128545E747B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B08A20B0-B1E2-4C51-B93D-128545E747B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B4D6A0-4140-4763-BBBB-FBB6611BE3EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B4D6A0-4140-4763-BBBB-FBB6611BE3EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B4D6A0-4140-4763-BBBB-FBB6611BE3EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B4D6A0-4140-4763-BBBB-FBB6611BE3EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
