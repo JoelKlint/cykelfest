@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace cykelfest
@@ -23,11 +24,6 @@ namespace cykelfest
 
             List<Group> groups = new ProblemSolver().Solve(teams);
 
-            foreach(var group in groups)
-            {
-                System.Console.WriteLine(group);
-            }
-
             // Skapa grupp fil
             var content = "FoodType;Host;Guests";
             foreach(var group in groups)
@@ -35,7 +31,10 @@ namespace cykelfest
                 var _guests = string.Join(",", group.Guests.Select(g => g.Name));
                 content += $"\n{group.FoodType};{group.Host.Name};{_guests}";
             }
-            //Console.WriteLine(content);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine("GruppFil.csv")))
+            {
+                outputFile.WriteLine(content);
+            }
 
             // Skapa hostinfo per team
             content = "Team;FoodType";
@@ -43,7 +42,10 @@ namespace cykelfest
             {
                 content += $"\n{group.Host.Name};{group.FoodType}";
             }
-            Console.WriteLine(content);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine("HostInfo.csv")))
+            {
+                outputFile.WriteLine(content);
+            }
 
             // Skapa kvällsschema per team
             content = "Team;PreCourseHost;MainCourseHost;DessertHost";
@@ -54,7 +56,10 @@ namespace cykelfest
                 var DessertGroup = team.Groups.Find(g => g.FoodType == FoodType.Dessert);
                 content += $"\n{team.Name};{PreCourseGroup.Host.Name};{MainCourseGroup.Host.Name};{DessertGroup.Host.Name}";
             }
-            Console.WriteLine(content);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine("KvällsSchema.csv")))
+            {
+                outputFile.WriteLine(content);
+            }
         }
     }
 }
