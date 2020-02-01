@@ -1,10 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "MiddagsMixern";
 }
 
-<div>Här laddar du upp din fil</div>
+<!-- <div>Här laddar du upp din fil</div>
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Result">
     <input type="file" name="file" >
     <input type="submit" value="Submit" />
+</form> -->
+
+
+<div class="jumbotron text-center" style="background-color: lightcyan;">
+  <h1>MiddagsMixern</h1>
+  <p>Vad kul att just du hittat hit! Lycka till med din middagsmix!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">            
+      <h3>Ladda upp din fil</h3>
+      <p>Här laddar du upp din fil på alla deltagare. Filen måste var på formatet enligt:</p>
+      <p> <i>Names, Address, Foodpreferences</i> och tänk på att antal deltagande par måste vara jämt delbart med 3. </p>
+      
+      <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Result">
+    <input type="file" name="file" >
+    <input type="submit" value="Submit" />
 </form>
+      
+    </div>
+    <div class="col-sm-6">
+      <h3>Om MiddagsMixern</h3>
+      <p>MiddagsMixern är till för dig som vill ha en cykelfest eller en grannfest. Genom att ladda upp en fil med alla deltagarna här får du tillbaka ett schema för kvällen.</p>
+        
+      <h4>Hur funkar det?</h4>
+      <p>Konceptet går kort o gott ut på att man äter förrätt, huvudrätt och efterrätt på olika ställen med olika personer. Och under kvällen står du för en av rätterna. På detta sätt får du sitta ner och lära känna några lite bättre under en rätt för att sedan ta dig vidare och hänga med ett nytt sällskap. Alla i sällskapet får avnjuta en spännande 3-rätters middag men behöver själv bara laga en rätt till ett sällskap på 6 personer. </p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" style="bottom: 0; background-color: lightcyan; position: fixed; width: 100%;">
+    <div class="footer-copyright text-center py-3">Created by: JoElin 
+        <a href="mailto:joelin.klint@gmail.com?Subject=FeedbackOnMiddagsMixern" target="_top">joelin.klint@gmail.com</a>        
+    </div>
+</footer>
