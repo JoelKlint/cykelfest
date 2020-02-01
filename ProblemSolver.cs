@@ -24,31 +24,64 @@ namespace cykelfest
             for (var i = 0; i < groupsPerCourse; i++)
             {
                 var index = i;
-                groups[index].FoodType = FoodType.PreCourse;
-                groups[index].Host = teams[indexFix(i* groupsPerCourse)];
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 1)]);
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 2)]);
-           
+
+                var group = groups[index];
+                var teamX = teams[indexFix(i * groupsPerCourse)];
+                var teamY = teams[indexFix(i * groupsPerCourse + 1)];
+                var teamZ = teams[indexFix(i * groupsPerCourse + 2)];
+
+                group.FoodType = FoodType.PreCourse;
+
+                group.Host = teamX;
+                group.Guests.Add(teamY);
+                group.Guests.Add(teamZ);
+
+                teamX.Groups.Add(group);
+                teamY.Groups.Add(group);
+                teamZ.Groups.Add(group);
+
             }
 
             // Create middle column
             for (var i = 0; i < groupsPerCourse; i++)
             {
                 var index = i + groupsPerCourse;
+
+                var group = groups[index];
+                var teamX = teams[indexFix(i * groupsPerCourse + 1)];
+                var teamY = teams[indexFix(i * groupsPerCourse + 3)];
+                var teamZ = teams[indexFix(i * groupsPerCourse + 8)];
+
                 groups[index].FoodType = FoodType.MainCourse;
-                groups[index].Host = teams[indexFix(i* groupsPerCourse + 1)];
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 3)]);
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 8)]);
+
+                group.Host = teamX;
+                group.Guests.Add(teamY);
+                group.Guests.Add(teamZ);
+
+                teamX.Groups.Add(group);
+                teamY.Groups.Add(group);
+                teamZ.Groups.Add(group);
             }
 
             // Create right column
             for (var i = 0; i < groupsPerCourse; i++)
             {
                 var index = i + groupsPerCourse*2;
+
+                var group = groups[index];
+                var teamX = teams[indexFix(i * groupsPerCourse + 2)];
+                var teamY = teams[indexFix(i * groupsPerCourse + 3)];
+                var teamZ = teams[indexFix(i * groupsPerCourse + 7)];
+
                 groups[index].FoodType = FoodType.Dessert;
-                groups[index].Host = teams[indexFix(i* groupsPerCourse + 2)];
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 3)]);
-                groups[index].Guests.Add(teams[indexFix(i* groupsPerCourse + 7)]);
+
+                group.Host = teamX;
+                group.Guests.Add(teamY);
+                group.Guests.Add(teamZ);
+
+                teamX.Groups.Add(group);
+                teamY.Groups.Add(group);
+                teamZ.Groups.Add(group);
             }
             return new List<Group>(groups);
 
