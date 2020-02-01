@@ -37,15 +37,10 @@ namespace cykelfest
 
 
             Team[] teams = teamList.ToArray();
-            //teams[0] = new Team("a");
-            //teams[1] = new Team("b");
-            //teams[2] = new Team("c");
-            //teams[3] = new Team("d");
-            //teams[4] = new Team("e");
-            //teams[5] = new Team("f");
-            //teams[6] = new Team("g");
-            //teams[7] = new Team("h");
-            //teams[8] = new Team("i");
+
+            // Shuffle list
+            var rand = new Random();
+            teams = teams.OrderBy(t => rand.NextDouble()).ToArray();
 
             List<Group> groups = new DynamicProblemSolver().Solve(teams);
 
