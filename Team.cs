@@ -5,11 +5,9 @@ namespace cykelfest
 {
     public class Team
     {
-        public Team(string _name)
-        {
-            Name = _name;
-        }
         public string Name { get; set; }
+        public string Address { get; set; }
+        public string FoodPreferences { get; set; }
         public List<Group> Groups { get; set; } = new List<Group>();
     }
 }

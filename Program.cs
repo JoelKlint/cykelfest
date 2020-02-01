@@ -11,18 +11,43 @@ namespace cykelfest
         {
             Console.WriteLine("Hello World!");
 
-            Team[] teams = new Team[9];
-            teams[0] = new Team("a");
-            teams[1] = new Team("b");
-            teams[2] = new Team("c");
-            teams[3] = new Team("d");
-            teams[4] = new Team("e");
-            teams[5] = new Team("f");
-            teams[6] = new Team("g");
-            teams[7] = new Team("h");
-            teams[8] = new Team("i");
+            var teamList = new List<Team>();
+            try
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader("input.csv"))
+                {
+                    sr.ReadLine();
+                    while(sr.Peek() >= 0)
+                    {
+                        String[] line = sr.ReadLine().Split(';');
+                        teamList.Add(new Team
+                        {
+                            Name = line[0],
+                            Address = line[1],
+                            FoodPreferences = line[2],
+                        });
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("kunde inte hitta input.csv");
+                Console.WriteLine(e.Message);
+            }
 
-            List<Group> groups = new ProblemSolver().Solve(teams);
+
+            Team[] teams = teamList.ToArray();
+            //teams[0] = new Team("a");
+            //teams[1] = new Team("b");
+            //teams[2] = new Team("c");
+            //teams[3] = new Team("d");
+            //teams[4] = new Team("e");
+            //teams[5] = new Team("f");
+            //teams[6] = new Team("g");
+            //teams[7] = new Team("h");
+            //teams[8] = new Team("i");
+
+            List<Group> groups = new DynamicProblemSolver().Solve(teams);
 
             // Skapa grupp fil
             var content = "FoodType;Host;Guests";
