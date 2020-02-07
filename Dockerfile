@@ -7,7 +7,8 @@ ADD . .
 RUN dotnet publish --configuration Release --output /build_artifacts
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+WORKDIR /cykelfest
 
-COPY --from=0 /build_artifacts cykelfest
+COPY --from=0 /build_artifacts /cykelfest
 
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet /cykelfest/cykelfest.dll
