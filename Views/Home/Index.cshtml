@@ -19,8 +19,9 @@
   <div class="row">
     <div class="col-sm-6">            
       <h3>Ladda upp din fil</h3>
-      <p>Här laddar du upp din fil på alla deltagare. Filen måste var på formatet enligt:</p>
+      <p>Här laddar du upp din csv-fil (med kommatecken) på alla deltagare. Filen måste var på formatet enligt:</p>
       <p> <i>Names, Address, Foodpreferences</i> och tänk på att antal deltagande par måste vara jämt delbart med 3. </p>
+      <p> När du klickar på Submit kommer du få tre filer nerladdare i en resultat-mapp till din dator </p>
       
       <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Result">
     <input type="file" name="file" >

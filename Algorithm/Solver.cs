@@ -18,7 +18,7 @@ namespace cykelfest
                     sr.ReadLine();
                     while(sr.Peek() >= 0)
                     {
-                        String[] line = sr.ReadLine().Split(';');
+                        String[] line = sr.ReadLine().Split(',');
                         teamList.Add(new Team
                         {
                             Name = line[0],
