@@ -1,6 +1,13 @@
 # Enter website
 https://middags-mixern.herokuapp.com/ 
 
+# Run local
+stand in ../cykelfest
+
+write `dotnet run`
+
+enter the http://localhost:.. provided in your browser
+
 # Deploy
 ```sh
 heroku container:login
